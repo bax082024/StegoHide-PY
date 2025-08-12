@@ -16,7 +16,6 @@ def decode_message(image_path):
             binary_data += bin(g)[-1]
             binary_data += bin(b)[-1]
 
-    # binary to 8-bit chunks
     bytes_data = [binary_data[i:i+8] for i in range(0, len(binary_data), 8)]
     message = ""
 

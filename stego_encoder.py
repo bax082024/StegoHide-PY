@@ -6,7 +6,7 @@ def to_bin(data):
 def hide_message(img_path, message, output_path):
     img = Image.open(img_path)
     img = img.convert('RGB')
-    img = img.rotate(90, expand=True)  # Rotate 90° 
+    img = img.rotate(90, expand=True)
     pixels = img.load()
 
     message += '||END||'
@@ -14,10 +14,10 @@ def hide_message(img_path, message, output_path):
     msg_len = len(binary_msg)
 
     width, height = img.size
-    capacity = width * height * 3  # 3 bits pr pixel
+    capacity = width * height * 3
 
     if msg_len > capacity:
-        print("❌ Message too long for this image!")
+        print("Message too long for this image!")
         return
 
     idx = 0
@@ -43,7 +43,7 @@ def hide_message(img_path, message, output_path):
             pixels[x, y] = (int(r_bin, 2), int(g_bin, 2), int(b_bin, 2))
 
     img.save(output_path)
-    print(f"✅ Message hidden in {output_path}")
+    print(f"Message hidden in {output_path}")
 
 if __name__ == "__main__":
     img_path = input("Enter path to source image: ")
